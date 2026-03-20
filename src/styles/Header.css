@@ -1,0 +1,68 @@
+.header {
+    background: white;
+    padding: var(--space-3) var(--space-5);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: var(--font-lg);
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.search-bar {
+    flex: 1;
+    margin: 0 var(--space-4);
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+}
+
+.icon-btn .icon {
+    font-size: 22px;
+    color: var(--text);
+}
+
+/* Aktív route kiemelése */
+.icon-btn.active {
+    background: var(--primary);
+}
+
+.icon-btn.active .icon {
+    color: white;
+}
+
+/* Hover */
+.icon-btn:hover {
+    background: var(--primary);
+}
+
+.icon-btn:hover .icon {
+    color: white;
+}

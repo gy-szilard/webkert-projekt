@@ -1,0 +1,29 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-5);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .home-container {
+        flex-direction: row;
+    }
+
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .product-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

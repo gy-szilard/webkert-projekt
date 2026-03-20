@@ -1,0 +1,38 @@
+.profile-container {
+    padding: var(--space-5);
+    max-width: 600px;
+    margin: auto;
+}
+
+.profile-card {
+    background: white;
+    padding: var(--space-5);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: var(--space-5);
+}
+
+.profile-card p {
+    margin-bottom: var(--space-3);
+}
+
+.logout-btn {
+    width: 100%;
+    padding: var(--space-3);
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    margin-bottom: var(--space-4);
+}
+
+.delete-btn {
+    width: 100%;
+    padding: var(--space-3);
+    background: red;
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+}

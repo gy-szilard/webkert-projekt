@@ -1,0 +1,33 @@
+.cart-summary {
+    background: white;
+    padding: var(--space-5);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    height: fit-content;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+}
+
+.summary-row.total {
+    font-size: var(--font-md);
+    margin-top: var(--space-4);
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: var(--space-3);
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    margin-top: var(--space-4);
+}
+
+.checkout-btn:hover {
+    background: var(--primary-dark);
+}

@@ -1,0 +1,61 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "iPhone 14 Pro",
+      "brand": "Apple",
+      "price": 499000,
+      "ram": "6GB",
+      "storage": "128GB",
+      "image": "https://via.placeholder.com/300x300?text=iPhone+14+Pro",
+      "description": "Apple iPhone 14 Pro – prémium teljesítmény és kamera."
+    },
+    {
+      "id": "2",
+      "name": "Samsung Galaxy S23",
+      "brand": "Samsung",
+      "price": 399000,
+      "ram": "8GB",
+      "storage": "256GB",
+      "image": "https://via.placeholder.com/300x300?text=Galaxy+S23",
+      "description": "Samsung Galaxy S23 – erős hardver és gyönyörű kijelző."
+    },
+    {
+      "id": "3",
+      "name": "Xiaomi Redmi Note 12",
+      "brand": "Xiaomi",
+      "price": 89900,
+      "ram": "6GB",
+      "storage": "128GB",
+      "image": "https://via.placeholder.com/300x300?text=Redmi+Note+12",
+      "description": "Xiaomi Redmi Note 12 – kiváló ár‑érték arány."
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "role": "admin",
+      "name": "Admin Felhasználó"
+    },
+    {
+      "id": "2",
+      "email": "user@example.com",
+      "password": "user123",
+      "role": "user",
+      "name": "Normál Felhasználó"
+    },
+    {
+      "id": "a17c",
+      "name": "Szilárd Gyivicsán",
+      "email": "gyiviszilu@gmail.com",
+      "password": "Anyadpicsajat1",
+      "city": "János",
+      "zip": "1234",
+      "address": "Béla utca 1-2-3",
+      "admin": true
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

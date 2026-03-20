@@ -1,0 +1,21 @@
+:root {
+    --primary: #007bff;
+    --primary-dark: #0056b3;
+
+    --text: #333;
+    --bg: #f5f5f5;
+    --border: #ddd;
+
+    --radius: 8px;
+    --shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+
+    --font-sm: clamp(0.9rem, 1vw, 1rem);
+    --font-md: clamp(1rem, 1.2vw, 1.2rem);
+    --font-lg: clamp(1.2rem, 2vw, 1.6rem);
+}

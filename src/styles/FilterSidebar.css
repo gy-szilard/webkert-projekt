@@ -1,0 +1,27 @@
+.filter-sidebar {
+    width: 250px;
+    padding: 20px;
+    background: #fafafa;
+    border-right: 1px solid #ddd;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group h4 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.filter-sidebar input[type="checkbox"] {
+    margin-right: 6px;
+}
