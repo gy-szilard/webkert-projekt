@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import Header from "../components/layout/Header";
 import FilterSidebar from "../components/filters/FilterSidebar";
 import ProductCard from "../components/product/ProductCard";
@@ -7,12 +6,11 @@ import { getProducts } from "../services/productService";
 import "../styles/HomePage.css";
 
 const HomePage = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
-
     const [filters, setFilters] = useState({
         brand: [],
         ram: [],
         storage: [],
+        color: [],
         q: ""
     });
 
@@ -40,7 +38,10 @@ const HomePage = () => {
             const storageOk =
                 filters.storage.length === 0 || filters.storage.includes(product.storage);
 
-            return brandOk && ramOk && storageOk;
+            const colorOk =
+                filters.color.length === 0 || filters.color.includes(product.color);
+
+            return brandOk && ramOk && storageOk && colorOk;
         });
 
         setProducts(filtered);

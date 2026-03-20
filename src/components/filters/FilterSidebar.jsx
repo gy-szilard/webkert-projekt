@@ -1,74 +1,73 @@
 import React from "react";
 import "../../styles/FilterSidebar.css";
 
-
 const FilterSidebar = ({ filters, onFilterChange }) => {
-    const handleCheckbox = (category, value) => {
-        const currentValues = filters[category] || [];
+    const handleCheckbox = (name, value) => {
+        const current = filters[name];
 
-        let updatedValues;
+        const updated = current.includes(value)
+            ? current.filter(v => v !== value)
+            : [...current, value];
 
-        if (currentValues.includes(value)) {
-            updatedValues = currentValues.filter(v => v !== value);
-        } else {
-            updatedValues = [...currentValues, value];
-        }
-
-        onFilterChange(category, updatedValues);
+        onFilterChange(name, updated);
     };
 
     return (
-        <div className="filter-sidebar">
-            <h3>Szűrés</h3>
+        <aside className="filter-sidebar">
+            <h2>Szűrők</h2>
 
+            {/* Márka */}
             <h4>Márka</h4>
-            <div>
-                {["Apple", "Samsung", "Xiaomi", "Oppo", "Huawei"].map(brand => (
-                    <div key={brand}>
-                        <label>
-                            <input
-                                type="checkbox"
-                                checked={filters.brand.includes(brand)}
-                                onChange={() => handleCheckbox("brand", brand)}
-                            />
-                            {brand}
-                        </label>
-                    </div>
-                ))}
-            </div>
+            {["Apple", "Samsung", "Xiaomi", "Oppo", "Huawei"].map(brand => (
+                <label key={brand}>
+                    <input
+                        type="checkbox"
+                        checked={filters.brand.includes(brand)}
+                        onChange={() => handleCheckbox("brand", brand)}
+                    />
+                    {brand} <br/>
+                </label>
+            ))}
 
+            {/* RAM */}
             <h4>RAM</h4>
-            <div>
-                {["4GB", "6GB", "8GB", "12GB", "16GB"].map(ram => (
-                    <div key={ram}>
-                        <label>
-                            <input
-                                type="checkbox"
-                                checked={filters.ram.includes(ram)}
-                                onChange={() => handleCheckbox("ram", ram)}
-                            />
-                            {ram}
-                        </label>
-                    </div>
-                ))}
-            </div>
+            {["4GB", "6GB", "8GB", "12GB", "16GB"].map(ram => (
+                <label key={ram}>
+                    <input
+                        type="checkbox"
+                        checked={filters.ram.includes(ram)}
+                        onChange={() => handleCheckbox("ram", ram)}
+                    />
+                    {ram} <br/>
+                </label>
+            ))}
 
+            {/* Tárhely */}
             <h4>Tárhely</h4>
-            <div>
-                {["64GB", "128GB", "256GB", "512GB", "1TB"].map(storage => (
-                    <div key={storage}>
-                        <label>
-                            <input
-                                type="checkbox"
-                                checked={filters.storage.includes(storage)}
-                                onChange={() => handleCheckbox("storage", storage)}
-                            />
-                            {storage}
-                        </label>
-                    </div>
-                ))}
-            </div>
-        </div>
+            {["64GB", "128GB", "256GB", "512GB", "1TB"].map(storage => (
+                <label key={storage}>
+                    <input
+                        type="checkbox"
+                        checked={filters.storage.includes(storage)}
+                        onChange={() => handleCheckbox("storage", storage)}
+                    />
+                    {storage} <br/>
+                </label>
+            ))}
+
+            {/* Szín */}
+            <h4>Szín</h4>
+            {["Fekete", "Fehér", "Kék"].map(color => (
+                <label key={color}>
+                    <input
+                        type="checkbox"
+                        checked={filters.color.includes(color)}
+                        onChange={() => handleCheckbox("color", color)}
+                    />
+                    {color} <br/>
+                </label>
+            ))}
+        </aside>
     );
 };
 

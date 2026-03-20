@@ -52,7 +52,7 @@ const LoginPage = () => {
                     <button type="submit" className="login-btn">Bejelentkezés</button>
 
                     <p className="register-link">
-                        Nincs még fiókod? <Link to="/register">Regisztráció</Link>
+                        Nincs még fiókod? <Link to="/register" className="reg-color">Regisztráció</Link>
                     </p>
                 </form>
             </main>

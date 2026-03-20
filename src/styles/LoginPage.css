@@ -53,3 +53,11 @@
     margin-top: var(--space-4);
     text-align: center;
 }
+
+.reg-color{
+    color: #0062d5;
+}
+
+.reg-color:hover {
+    color: #0451a8;
+}

@@ -23,17 +23,19 @@ const ProductCard = ({ product, addToCart }) => {
                 alt={product.name}
                 className="product-img"
             />
+            <div>
+                <h3 className="product-title">{product.name}</h3>
+                <p className="price">{product.price} Ft</p>
 
-            <h3 className="product-title">{product.name}</h3>
-            <p className="price">{product.price} Ft</p>
+                <button
+                    className="add-to-cart"
+                    aria-label={`${product.name} hozzáadása a kosárhoz`}
+                    onClick={handleAddToCart}
+                >
+                    Kosárba
+                </button>
+            </div>
 
-            <button
-                className="add-to-cart"
-                aria-label={`${product.name} hozzáadása a kosárhoz`}
-                onClick={handleAddToCart}
-            >
-                Kosárba
-            </button>
         </article>
     );
 };
