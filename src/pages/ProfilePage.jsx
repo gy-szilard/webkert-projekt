@@ -43,7 +43,16 @@ const ProfilePage = () => {
                     <p><strong>Település:</strong> {user.city}</p>
                     <p><strong>Irányítószám:</strong> {user.zip}</p>
                     <p><strong>Cím:</strong> {user.address}</p>
+
+                    <button
+                        className="edit-profile-btn"
+                        onClick={() => navigate("/profile/edit")}
+                    >
+                        Fiók adatainak szerkesztése
+                    </button>
+
                 </div>
+
 
                 <button className="logout-btn" onClick={handleLogout}>
                     Kijelentkezés

@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/layout/Header";
 import CartItem from "../components/cart/CartItem";
 import CartSummary from "../components/cart/CartSummary";
 import "../styles/CartPage.css";
 
 const CartPage = () => {
-    const [cart, setCart] = useState([]); // 🔥 Üres kosár induláskor
+    const [cart, setCart] = useState([]);
+
+    // 🔥 Kosár betöltése
+    useEffect(() => {
+        const saved = JSON.parse(localStorage.getItem("cart")) || [];
+        setCart(saved);
+    }, []);
+
+    // 🔥 Kosár mentése
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     const increase = (id) => {
         setCart(cart.map(item =>
-            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
         ));
     };
 
@@ -25,7 +38,10 @@ const CartPage = () => {
         setCart(cart.filter(item => item.id !== id));
     };
 
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    );
 
     return (
         <>

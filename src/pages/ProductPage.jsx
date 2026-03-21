@@ -12,6 +12,7 @@ const ProductPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
+    // 🔥 Termék betöltése (mindenki számára elérhető)
     useEffect(() => {
         async function load() {
             try {
@@ -26,6 +27,39 @@ const ProductPage = () => {
 
         load();
     }, [id]);
+
+    // 🔥 Kosárba rakás logika
+    const handleAddToCart = () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        // ❌ Ha nincs bejelentkezve → login oldal
+        if (!user) {
+            navigate("/login");
+            return;
+        }
+
+        // ✔ Ha be van jelentkezve → kosárba rakás
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existing = cart.find((item) => item.id === product.id);
+
+        const finalPrice =
+            product.discountPercent > 0
+                ? product.discountPrice
+                : product.price;
+
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            cart.push({
+                ...product,
+                price: finalPrice,
+                quantity: 1,
+            });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+    };
 
     if (loading) return <p>Betöltés...</p>;
     if (error) return <p>{error}</p>;
@@ -44,13 +78,33 @@ const ProductPage = () => {
                         <img
                             src={product.image}
                             alt={product.name}
-                            className="product-image"
+                            className="product-page-img"
                         />
                     </div>
 
                     <div className="product-info">
                         <h1>{product.name}</h1>
-                        <p className="product-price">{product.price} Ft</p>
+
+                        {/* 🔥 Akciós ár megjelenítése */}
+                        {product.discountPercent > 0 ? (
+                            <>
+                                <div className="discount-badge">
+                                    -{product.discountPercent}%
+                                </div>
+
+                                <p className="old-price">
+                                    {product.price.toLocaleString("hu-HU")} Ft
+                                </p>
+
+                                <p className="new-price">
+                                    {product.discountPrice.toLocaleString("hu-HU")} Ft
+                                </p>
+                            </>
+                        ) : (
+                            <p className="product-price">
+                                {product.price.toLocaleString("hu-HU")} Ft
+                            </p>
+                        )}
 
                         <h2>Specifikációk</h2>
                         <ul className="spec-list">
@@ -58,10 +112,10 @@ const ProductPage = () => {
                             <li><strong>RAM:</strong> {product.ram}</li>
                             <li><strong>Tárhely:</strong> {product.storage}</li>
                             <li><strong>Szín:</strong> {product.color}</li>
-                            <li><strong>Processzor:</strong> {product.cpu}</li>
+                            <li><strong>Leírás:</strong> {product.description}</li>
                         </ul>
 
-                        <button className="add-to-cart-btn">
+                        <button className="add-to-cart-btn" onClick={handleAddToCart}>
                             Kosárba
                         </button>
                     </div>

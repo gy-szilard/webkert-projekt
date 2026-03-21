@@ -1,6 +1,15 @@
 const API_URL = "http://localhost:3001/users";
 
 export async function registerUser(userData) {
+    // 🔥 1. Ellenőrizzük, hogy létezik-e már ilyen email
+    const checkRes = await fetch(`${API_URL}?email=${userData.email}`);
+    const existingUsers = await checkRes.json();
+
+    if (existingUsers.length > 0) {
+        throw new Error("Ez az email cím már használatban van.");
+    }
+
+    // 🔥 2. Ha nincs ilyen email, mehet a regisztráció
     const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -26,4 +35,15 @@ export async function deleteUser(id) {
 
     if (!res.ok) throw new Error("Nem sikerült törölni a felhasználót.");
     return true;
+}
+
+export async function updateUser(id, updatedData) {
+    const res = await fetch(`${API_URL}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData)
+    });
+
+    if (!res.ok) throw new Error("Nem sikerült frissíteni a felhasználót.");
+    return res.json();
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import "../../styles/CartItem.css";
 
+const formatPrice = (num) => num.toLocaleString("hu-HU");
+
 const CartItem = ({ item, onIncrease, onDecrease, onRemove }) => {
     return (
         <article className="cart-item">
@@ -8,12 +10,12 @@ const CartItem = ({ item, onIncrease, onDecrease, onRemove }) => {
 
             <div className="cart-item-info">
                 <h3>{item.name}</h3>
-                <p className="cart-item-price">{item.price} Ft</p>
+                <p className="cart-item-price">{formatPrice(item.price)} Ft</p>
 
                 <div className="cart-item-quantity">
-                    <button aria-label="Mennyiség csökkentése" onClick={onDecrease}>−</button>
+                    <button onClick={onDecrease}>−</button>
                     <span>{item.quantity}</span>
-                    <button aria-label="Mennyiség növelése" onClick={onIncrease}>+</button>
+                    <button onClick={onIncrease}>+</button>
                 </div>
 
                 <button className="remove-btn" onClick={onRemove}>

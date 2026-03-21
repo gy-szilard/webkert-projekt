@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/layout/Header";
-import { getProducts } from "../../services/productService";
-import { deleteProduct } from "../../services/productService";
+import { getProducts, deleteProduct } from "../../services/productService";
 import "../../styles/AdminPage.css";
 import { Link } from "react-router-dom";
 
@@ -18,6 +17,8 @@ const AdminPage = () => {
     }, []);
 
     const handleDelete = async (id) => {
+        if (!window.confirm("Biztosan törlöd?")) return;
+
         await deleteProduct(id);
         load();
     };
@@ -37,6 +38,7 @@ const AdminPage = () => {
                         <th>ID</th>
                         <th>Név</th>
                         <th>Ár</th>
+                        <th>Akció</th>
                         <th>Műveletek</th>
                     </tr>
                     </thead>
@@ -46,7 +48,12 @@ const AdminPage = () => {
                         <tr key={p.id}>
                             <td>{p.id}</td>
                             <td>{p.name}</td>
-                            <td>{p.price} Ft</td>
+                            <td>{p.price.toLocaleString("hu-HU")} Ft</td>
+                            <td>
+                                {p.discountPercent > 0
+                                    ? `-${p.discountPercent}% (${p.discountPrice.toLocaleString("hu-HU")} Ft)`
+                                    : "Nincs"}
+                            </td>
                             <td>
                                 <button
                                     className="delete-btn"

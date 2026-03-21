@@ -57,7 +57,7 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
 
             {/* Szín */}
             <h4>Szín</h4>
-            {["Fekete", "Fehér", "Kék"].map(color => (
+            {["Fekete", "Fehér", "Kék", "Szürke", "Piros", "Lila", "Narancssárga"].map(color => (
                 <label key={color}>
                     <input
                         type="checkbox"

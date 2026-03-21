@@ -1,0 +1,42 @@
+.info-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.info-container h1 {
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.info-container h2 {
+    margin-top: 25px;
+    font-size: 24px;
+}
+
+.info-container h3 {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.info-container p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 8px 14px;
+    background: var(--primary);
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: var(--primary-dark);
+}

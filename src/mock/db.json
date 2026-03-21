@@ -1,62 +1,64 @@
 {
   "products": [
     {
-      "id": "1",
+      "id": "0e3e",
       "name": "iPhone 14 Pro",
       "brand": "Apple",
       "color": "Fekete",
-      "price": 499000,
+      "price": 260000,
       "ram": "6GB",
-      "storage": "128GB",
-      "image": "/assets/images/iphone14profekete.png",
-      "description": "Apple iPhone 14 Pro – prémium teljesítmény és kamera."
+      "storage": "256GB",
+      "image": "/images/iphone14profekete.png",
+      "description": "iPhone 14 Pro",
+      "discountPercent": 0,
+      "discountPrice": null
     },
     {
-      "id": "2",
-      "name": "Samsung Galaxy S23",
+      "id": "fcfd",
+      "name": "Samsung Galaxy 23",
       "brand": "Samsung",
       "color": "Szürke",
-      "price": 399000,
-      "ram": "8GB",
+      "price": 350000,
+      "ram": "6GB",
       "storage": "256GB",
-      "image": "/assets/images/samsunggal23szurke.png",
-      "description": "Samsung Galaxy S23 – erős hardver és gyönyörű kijelző."
+      "image": "/images/samsunggal23szurke.png",
+      "description": "Samsung Galaxy 23",
+      "discountPercent": 0,
+      "discountPrice": null
     },
     {
-      "id": "3",
+      "id": "1b41",
       "name": "Xiaomi Redmi Note 12",
       "brand": "Xiaomi",
       "color": "Fekete",
-      "price": 89900,
-      "ram": "6GB",
+      "price": 90000,
+      "ram": "8GB",
       "storage": "128GB",
-      "image": "/assets/images/xiaomiredminote12fekete.png",
-      "description": "Xiaomi Redmi Note 12 – kiváló ár‑érték arány."
+      "image": "/images/xiaomiredminote12fekete.png",
+      "description": "Xiaomi Redmi Note 12 Akció",
+      "discountPercent": 15,
+      "discountPrice": 76500
     }
   ],
   "users": [
     {
       "id": "1",
-      "email": "admin@example.com",
-      "password": "admin123",
-      "role": "admin",
-      "name": "Admin Felhasználó"
-    },
-    {
-      "id": "2",
-      "email": "user@example.com",
-      "password": "user123",
-      "role": "user",
-      "name": "Normál Felhasználó"
-    },
-    {
-      "id": "a17c",
-      "name": "Szilárd Gyivicsán",
+      "name": "Gyivicsán Szilárd",
       "email": "gyiviszilu@gmail.com",
-      "password": "Anyadpicsajat1",
-      "city": "János",
+      "password": "Erosjelszo5",
+      "city": "Szeged",
       "zip": "1234",
-      "address": "Béla utca 1-2-3",
+      "address": "Béla utca 4",
+      "admin": false
+    },
+    {
+      "id": "6f67",
+      "name": "Gyivicsán Szilárd",
+      "email": "pacalmemes@gmail.com",
+      "password": "Erosjelszo5",
+      "city": "Szeged",
+      "zip": "1234",
+      "address": "Béla utca 4",
       "admin": true
     }
   ],

@@ -35,7 +35,7 @@ const RegisterPage = () => {
             await registerUser(newUser);
             navigate("/login");
         } catch (err) {
-            setError("Hiba történt a regisztráció során.");
+            setError(err.message); // 🔥 valódi hibaüzenet megjelenítése
         }
     };
 

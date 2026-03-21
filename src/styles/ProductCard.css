@@ -1,12 +1,15 @@
 .product-card {
     width: 350px;
-    height: 250px;
+    max-height: 280px;
     padding: 15px;
     background: white;
     border-radius: 8px;
     border: 1px solid #ddd;
     cursor: pointer;
     transition: 0.2s;
+
+    position: relative; /* 🔥 kell a badge pozicionálásához */
+    overflow: visible;  /* 🔥 ne vágja le a badge-et */
 }
 
 .product-card:hover {
@@ -20,6 +23,13 @@
     display: block;
     margin: 0 auto;
     padding: var(--space-4);
+
+    position: relative;
+    z-index: 1; /* 🔥 a badge fölé kerül */
+}
+
+.product-card .product-img {
+    width: 30%;
 }
 
 .price {
@@ -39,4 +49,34 @@
 
 .add-to-cart:hover {
     background: #0056b3;
+}
+
+/* 🔥 VÉGLEGES, JÓL MŰKÖDŐ BADGE */
+.discount-badge {
+    position: absolute; /* 🔥 a kártya sarkához igazodik */
+    top: 10px;
+    left: 10px;
+
+    background: #e60023;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+
+    z-index: 10; /* 🔥 a kép fölött legyen */
+    opacity: 1; /* 🔥 mindig látszik */
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.new-price {
+    color: #e60023;
+    font-size: 20px;
+    font-weight: bold;
 }

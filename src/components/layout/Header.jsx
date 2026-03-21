@@ -3,87 +3,73 @@ import "../../styles/Header.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaUser, FaTools } from "react-icons/fa";
 
-const Header = () => {
+const Header = ({ onSearch }) => {
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("user"));
 
-    const handleSearch = (e) => {
-        if (e.key === "Enter") {
-            navigate(`/?q=${search}`);
-        }
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setSearch(value);
+        onSearch(value);
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem("user");
-        navigate("/");
+    const handleCartClick = () => {
+        if (!user) {
+            navigate("/login");
+            return;
+        }
+        navigate("/cart");
     };
 
     return (
         <header className="header" role="banner">
             <nav className="nav" aria-label="Fő navigáció">
+
+                {/* LOGO */}
                 <NavLink to="/" className="logo">
                     MobileShop
                 </NavLink>
 
+                {/* KERESŐ */}
                 <input
                     type="search"
                     className="search-bar"
                     placeholder="Keresés..."
                     aria-label="Keresés a termékek között"
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    onKeyDown={handleSearch}
+                    onChange={handleChange}
                 />
 
+                {/* FELSŐ MENÜ */}
+                <div className="header-links">
+                    <NavLink to="/kapcsolat" className="header-link">Kapcsolat</NavLink>
+                    <NavLink to="/gyik" className="header-link">GYIK</NavLink>
+                    <NavLink to="/aszf" className="header-link">ÁSZF / Adatvédelem</NavLink>
+                </div>
+
+                {/* IKONOK */}
                 <div className="header-icons">
 
-                    {/* ADMIN MENÜ – csak adminnak látszik */}
-                    {user?.admin && (
-                        <NavLink
-                            to="/admin"
-                            className={({ isActive }) =>
-                                isActive ? "icon-btn active" : "icon-btn"
-                            }
-                            aria-label="Admin panel"
-                        >
+                    {/* 🔥 ADMIN IKON – csak adminnak */}
+                    {user?.admin === true && (
+                        <NavLink to="/admin" className="icon-btn">
                             <FaTools className="icon" />
                         </NavLink>
                     )}
 
                     {/* KOSÁR */}
-                    <NavLink
-                        to="/cart"
-                        className={({ isActive }) =>
-                            isActive ? "icon-btn active" : "icon-btn"
-                        }
-                        aria-label="Kosár"
-                    >
+                    <button className="icon-btn" onClick={handleCartClick}>
                         <FaShoppingCart className="icon" />
-                    </NavLink>
+                    </button>
 
-                    {/* PROFIL / LOGIN / LOGOUT */}
-                    {user ? (
-                        <NavLink
-                            to="/profile"
-                            className={({ isActive }) =>
-                                isActive ? "icon-btn active" : "icon-btn"
-                            }
-                            aria-label="Profil"
-                        >
-                            <FaUser className="icon" />
-                        </NavLink>
-                    ) : (
-                        <NavLink
-                            to="/login"
-                            className={({ isActive }) =>
-                                isActive ? "icon-btn active" : "icon-btn"
-                            }
-                            aria-label="Bejelentkezés"
-                        >
-                            <FaUser className="icon" />
-                        </NavLink>
-                    )}
+                    {/* PROFIL */}
+                    <NavLink
+                        to={user ? "/profile" : "/login"}
+                        className="icon-btn"
+                    >
+                        <FaUser className="icon" />
+                    </NavLink>
 
                 </div>
             </nav>

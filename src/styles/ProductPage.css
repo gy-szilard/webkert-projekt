@@ -62,6 +62,14 @@
     background: var(--primary-dark);
 }
 
+.product-page-img {
+    width: 300px;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+
 /* Tablet */
 @media (min-width: 768px) {
     .product-content {

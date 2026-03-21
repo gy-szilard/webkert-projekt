@@ -11,7 +11,7 @@ const HomePage = () => {
         ram: [],
         storage: [],
         color: [],
-        q: ""
+        q: "" // 🔥 ide jön a keresés
     });
 
     const [products, setProducts] = useState([]);
@@ -24,9 +24,18 @@ const HomePage = () => {
         }));
     };
 
+    const handleSearch = (value) => {
+        setFilters(prev => ({
+            ...prev,
+            q: value // 🔥 valós időben frissítjük
+        }));
+    };
+
     const loadProducts = async () => {
         setLoading(true);
         const data = await getProducts();
+
+        const q = filters.q.trim().toLowerCase();
 
         const filtered = data.filter(product => {
             const brandOk =
@@ -41,12 +50,25 @@ const HomePage = () => {
             const colorOk =
                 filters.color.length === 0 || filters.color.includes(product.color);
 
-            return brandOk && ramOk && storageOk && colorOk;
+            // 🔥 ÜRES KERESÉS = MINDEN TERMÉK
+            const searchOk =
+                q === "" ||
+                product.name.toLowerCase().includes(q) ||
+                product.brand.toLowerCase().includes(q);
+
+            return brandOk && ramOk && storageOk && colorOk && searchOk;
         });
 
         setProducts(filtered);
         setLoading(false);
     };
+
+    const addToCart = (product) => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+    };
+
 
     useEffect(() => {
         loadProducts();
@@ -54,18 +76,24 @@ const HomePage = () => {
 
     return (
         <>
-            <Header />
+            <Header onSearch={handleSearch} />
 
             <div className="home-container">
-                <FilterSidebar filters={filters} onFilterChange={handleFilterChange} />
+                <FilterSidebar filters={filters} onFilterChange={handleFilterChange}/>
 
                 <div className="product-list">
                     {loading ? (
                         <p>Betöltés...</p>
                     ) : (
-                        products.map((p) => <ProductCard key={p.id} product={p} />)
+                        products.map((p) => (
+                            <ProductCard
+                                key={p.id}
+                                product={p}
+                            />
+                        ))
                     )}
                 </div>
+
             </div>
         </>
     );
